@@ -1,0 +1,26 @@
+.login {
+   height: 100%;
+}
+
+.login__content {
+   position: absolute;
+   width: 520px;
+   height: 425px;
+   left: calc(50% - 520px/2);
+   top: 222px;
+}
+
+.login__content > div {
+   margin-bottom: 20px;
+}
+
+.content__icon {
+   text-align: center;
+}
+
+.content__form-wrapper {
+   padding: 40px 30px;
+   background-color: #ffffff;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+   border-radius: 5px;
+}

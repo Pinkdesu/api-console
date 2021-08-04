@@ -1,8 +1,8 @@
 import React from "react";
-import "./App.css";
+import AppBootstrap from "./features/AppBootstrap";
 
 const App: React.VFC = () => {
-  return null;
+  return <AppBootstrap />;
 };
 
 export default App;
