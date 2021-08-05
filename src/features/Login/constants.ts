@@ -1,0 +1,1 @@
+export const fieldValidator = (value: string):string | undefined => value ? undefined : 'Incorrect';

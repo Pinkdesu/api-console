@@ -36,9 +36,44 @@
    color: #0D0D0D;
 }
 
-.form-header {
+.form__header {
    font-style: normal;
    font-weight: normal;
    font-size: 24px;
    line-height: 30px;
+}
+
+.error {
+   display: flex;
+   flex-flow: row nowrap;
+   background: rgba(207, 44, 0, 0.1);
+   border-radius: 5px;
+   padding: 10px;
+   margin-bottom: 50px;
+   gap: 10px;
+}
+
+.error__icon {
+   margin-top: 4px;
+}
+
+.error__description{
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: flex-start;
+}
+
+.description__header {
+   font-weight: normal;
+   font-size: 18px;
+   line-height: 30px;
+   color: #CF2C00;
+   margin: 0;
+}
+
+.description__text {
+   font-size: 12px;
+   line-height: 20px;
+   color: #CF2C00;
+   opacity: 0.5;
 }

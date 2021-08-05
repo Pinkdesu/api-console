@@ -8,15 +8,30 @@ interface IProps {
   placeholder: string;
   type?: "text" | "password";
   sublabel?: string;
+  validate?: (value: string) => string | undefined;
 }
 
 const TextField: React.VFC<IProps> = (props) => {
-  const { type = "text", name, label, sublabel = "", placeholder } = props;
+  const {
+    name,
+    label,
+    placeholder,
+    type = "text",
+    sublabel = "",
+    validate = () => undefined,
+  } = props;
 
   return (
-    <Field name={name} type={type} placeholder={placeholder}>
-      {({ input }) => (
-        <div className="text-field">
+    <Field
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      validate={validate}
+    >
+      {({ input, meta }) => (
+        <div
+          className={`text-field ${meta.error && meta.touched ? "error" : ""}`}
+        >
           <label className="text-field__label">
             <span className="label__text">{label}</span>
             {Boolean(sublabel) && (
