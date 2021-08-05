@@ -3,13 +3,22 @@ import { Form } from "react-final-form";
 import TextField from "../Common/TextField";
 import Button from "../Common/Button";
 import Error from "./components/Error";
+import { auth } from "../AppBootstrap/authSlice";
+import { IAuth } from "../AppBootstrap/interfaces";
+import * as selectors from "../AppBootstrap/selectors";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fieldValidator } from "./constants";
 import { ReactComponent as LogoSVG } from "../../assets/logo.svg";
 import "./style.css";
 
 const Login: React.VFC = () => {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const dispatch = useAppDispatch();
+
+  const error = useAppSelector(selectors.error);
+  const loading = useAppSelector(selectors.loading);
+
+  const onSubmit = (values: IAuth) => {
+    dispatch(auth(values));
   };
 
   return (
@@ -24,7 +33,7 @@ const Login: React.VFC = () => {
             render={({ handleSubmit, valid }) => (
               <form onSubmit={handleSubmit}>
                 <h2 className="form__header">API-консолька</h2>
-                <Error error="sdasd" />
+                {error && <Error error={error} />}
                 <TextField
                   name="login"
                   label="Логин"
@@ -36,7 +45,6 @@ const Login: React.VFC = () => {
                   label="Сублогин"
                   sublabel="Опционально"
                   placeholder="Сублогин..."
-                  validate={fieldValidator}
                 />
                 <TextField
                   name="password"
@@ -46,7 +54,12 @@ const Login: React.VFC = () => {
                   validate={fieldValidator}
                 />
 
-                <Button type="submit" text="Войти" disabled={!valid} />
+                <Button
+                  type="submit"
+                  text="Войти"
+                  loading={loading}
+                  disabled={!valid || loading}
+                />
               </form>
             )}
           />

@@ -30,7 +30,9 @@ const TextField: React.VFC<IProps> = (props) => {
     >
       {({ input, meta }) => (
         <div
-          className={`text-field ${meta.error && meta.touched ? "error" : ""}`}
+          className={`text-field ${
+            meta.error && meta.touched ? "field-error" : ""
+          }`}
         >
           <label className="text-field__label">
             <span className="label__text">{label}</span>
