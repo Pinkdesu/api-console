@@ -1,0 +1,53 @@
+.text-field {
+   display: flex;
+   flex-flow: column;
+   margin-bottom: 25px;
+}
+
+.text-field__label {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 5px;
+}
+
+.label__text, .label__subtext {
+   line-height: 20px;
+   font-size: 16px;
+}
+
+.label__subtext {
+   font-size: 12px;
+   color: #999999;
+}
+
+.text-field__input {
+   font-size: 16px;
+   line-height: 20px;
+   height: 40px;
+   background: #FFFFFF;
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   box-sizing: border-box;
+   border-radius: 5px;
+   padding: 5px 10px;
+}
+
+.button {
+   background: linear-gradient(180deg, #45A6FF 0%, #0055FB 100%), #C4C4C4;
+   border-radius: 5px;
+   padding: 5px 10px;
+   outline: none;
+   border: none;
+}
+
+.button__text {
+   display: inline-block;
+   color: #FFFFFF;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 30px;
+   text-align: center;
+   min-width: 90px;
+   height: 30px;
+}
