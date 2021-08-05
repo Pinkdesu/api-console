@@ -58,7 +58,7 @@ const Login: React.VFC = () => {
                   type="submit"
                   text="Войти"
                   loading={loading}
-                  disabled={!valid || loading}
+                  disabled={!valid}
                 />
               </form>
             )}

@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import cn from "classnames";
 import { ReactComponent as LoaderSVG } from "../../assets/loader.svg";
 import "./style.css";
 
@@ -13,7 +14,11 @@ const Button: React.VFC<IProps> = (props) => {
   const { text, disabled = false, loading = false, type = "button" } = props;
 
   return (
-    <button className="button" type={type} disabled={disabled}>
+    <button
+      className={cn("button", { inactive: !loading && disabled })}
+      type={type}
+      disabled={disabled || loading}
+    >
       {loading ? (
         <span className="button__loader">
           <LoaderSVG />
