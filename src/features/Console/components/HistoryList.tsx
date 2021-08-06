@@ -1,9 +1,14 @@
 import React from "react";
-import { ReactComponent as CloseSVG } from "../../../assets/close.svg";
+import HistoryItem from "./HistoryItem";
 import "../style.css";
 
 const HistoryList: React.VFC = () => {
-  return <ul className="request-history__list"></ul>;
+  return (
+    <ul className="request-history__list">
+      <HistoryItem />
+      <HistoryItem />
+    </ul>
+  );
 };
 
 export default HistoryList;
