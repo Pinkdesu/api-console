@@ -22,15 +22,25 @@
    color: #999999;
 }
 
+.text-field__input, .text-field__textarea {
+   background-color: #FFFFFF;
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+   outline: none;
+}
+
 .text-field__input {
    font-size: 16px;
    line-height: 20px;
    height: 40px;
-   background-color: #FFFFFF;
-   border: 1px solid rgba(0, 0, 0, 0.2);
-   border-radius: 5px;
    padding: 5px 10px;
-   outline: none;
+}
+
+.text-field__textarea {
+   font-size: 14px;
+   line-height: 18px;
+   padding: 10px;
+   width: 100% !important;
 }
 
 .text-field__input:focus {

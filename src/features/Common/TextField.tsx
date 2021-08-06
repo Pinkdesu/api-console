@@ -1,11 +1,12 @@
 import React, { memo } from "react";
+import cn from "classnames";
 import { Field } from "react-final-form";
 import "./style.css";
 
 interface IProps {
   name: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   type?: "text" | "password";
   sublabel?: string;
   validate?: (value: string) => string | undefined;
@@ -15,7 +16,7 @@ const TextField: React.VFC<IProps> = (props) => {
   const {
     name,
     label,
-    placeholder,
+    placeholder = "",
     type = "text",
     sublabel = "",
     validate = () => undefined,
@@ -30,9 +31,9 @@ const TextField: React.VFC<IProps> = (props) => {
     >
       {({ input, meta }) => (
         <div
-          className={`text-field ${
-            meta.error && meta.touched ? "field-error" : ""
-          }`}
+          className={cn("text-field", {
+            "field-error": meta.error && meta.touched,
+          })}
         >
           <label className="text-field__label">
             <span className="label__text">{label}</span>

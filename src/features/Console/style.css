@@ -187,3 +187,35 @@
    padding: 14px;
    border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.console__form { 
+   background-color: #ffffff;
+}
+
+.form__main {
+   display: flex;
+   flex-flow: row nowrap;
+   align-items: center;
+   justify-content: center;
+   gap: 3px;
+   padding: 10px 15px 15px 15px;
+}
+
+.main__separator {
+   flex: 0 0 4px;
+}
+
+.form__main .text-field {
+   flex: 2 1 50%;
+}
+
+.form__main .text-field__textarea{
+   resize: none;
+   min-height: 830px;
+}
+
+.form__main .text-field__label {
+   font-size: 12px;
+   line-height: 20px;
+   color: #999999;
+}
