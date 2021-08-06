@@ -45,7 +45,7 @@ const Header: React.VFC<IProps> = (props) => {
             </span>
           </button>
         </div>
-        <div className="left-side__expand">
+        <div>
           <button className="opacity-button" onClick={toggleScreen}>
             <span className="opacity-button__icon">
               {fullScreen ? <MinimizeSVG /> : <ExpandSVG />}

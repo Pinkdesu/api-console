@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import cn from "classnames";
 import Header from "./components/Header";
+import RequestHistory from "./components/RequestHistory";
 
 const Console: React.VFC = () => {
   const [fullScreen, setFullScreen] = useState<boolean>(false);
@@ -13,6 +14,7 @@ const Console: React.VFC = () => {
   return (
     <div className={cn("console", { fullScreen })}>
       <Header fullScreen={fullScreen} toggleScreen={toggleScreen} />
+      <RequestHistory />
     </div>
   );
 };
