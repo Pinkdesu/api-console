@@ -1,0 +1,91 @@
+.console {
+   position: absolute;
+   width: 1440px;
+   height: 1045px;
+   left: 100px;
+   top: 50px;
+   color:#0D0D0D;
+   transition: all 0.2s linear;
+}
+
+.console.fullScreen {
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+
+.console__header, .console__history {
+   background-color: #F6F6F6;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+   padding: 10px 15px;
+}
+
+.console__header {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header__right-side, .header__left-side {
+   display: flex;
+   flex-flow: row nowrap;
+   align-items: center;
+   gap: 20px;
+}
+
+.header__left-side {
+   gap: 30px;
+}
+
+.right-side__title {
+   font-size: 20px;
+   line-height: 30px;
+}
+
+.left-side__user {
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+   padding: 5px 15px;
+}
+
+.user__login, .user__sublogin, .user__separator, .opacity-button__text {
+   font-size: 16px;
+   line-height: 20px;
+}
+
+.user__separator {
+   margin: 0px 5px;
+   color: rgba(0, 0, 0, 0.2);
+}
+
+.opacity-button {
+   background: none;
+   outline: none;
+   border: 2px solid rgba(0, 0, 0, 0);
+   border-radius: 7px;
+   height: 32px;
+}
+
+.opacity-button:focus {
+   border-color: #45A5FF;
+}
+
+.opacity-button:focus .opacity-button__text,
+.opacity-button:hover .opacity-button__text {
+   color: #0055FB; 
+}
+
+.opacity-button:focus .opacity-button__icon path,
+.opacity-button:hover .opacity-button__icon path{
+   stroke:#0055FB;
+}
+
+.opacity-button__text, .opacity-button__icon {
+   vertical-align: middle;
+}
+
+.opacity-button__text {
+   margin-right: 11px;
+}

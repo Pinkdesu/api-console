@@ -5,7 +5,7 @@ import Button from "../Common/Button";
 import Error from "./components/Error";
 import { auth } from "../AppBootstrap/authSlice";
 import { IAuth } from "../AppBootstrap/interfaces";
-import * as selectors from "../AppBootstrap/selectors";
+import { errorSelector, loadingSelector } from "../AppBootstrap/selectors";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fieldValidator } from "./constants";
 import { ReactComponent as LogoSVG } from "../../assets/logo.svg";
@@ -14,8 +14,8 @@ import "./style.css";
 const Login: React.VFC = () => {
   const dispatch = useAppDispatch();
 
-  const error = useAppSelector(selectors.error);
-  const loading = useAppSelector(selectors.loading);
+  const loading = useAppSelector<boolean>(loadingSelector);
+  const error = useAppSelector<string | null>(errorSelector);
 
   const onSubmit = (values: IAuth) => {
     dispatch(auth(values));

@@ -11,7 +11,7 @@ export interface IUser {
 }
 
 export interface IState {
-   user: IUser | object;
+   user: IUser;
    loading: boolean;
    isAuth: boolean;
    error: string | null;

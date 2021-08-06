@@ -2,7 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IState, IAuth, IUser } from "./interfaces"
 
 const initialState: IState = {
-   user: {},
+   user: {
+      login: '',
+      sublogin: '',
+      sessionKey: ''
+   },
    loading: false,
    isAuth: false,
    error: null
