@@ -3,6 +3,7 @@ import { Form } from "react-final-form";
 import TextField from "../Common/TextField";
 import Button from "../Common/Button";
 import Error from "./components/Error";
+import GitLink from "../Common/GitLink";
 import { auth } from "../AppBootstrap/authSlice";
 import { IAuth } from "../AppBootstrap/interfaces";
 import { errorSelector, loadingSelector } from "../AppBootstrap/selectors";
@@ -64,9 +65,7 @@ const Login: React.VFC = () => {
             )}
           />
         </div>
-        <div className="content__git">
-          <a href="https://github.com/Pinkdesu">@pinkdesu</a>
-        </div>
+        <GitLink />
       </div>
     </div>
   );

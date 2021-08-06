@@ -205,17 +205,24 @@
    flex: 0 0 4px;
 }
 
-.form__main .text-field {
+.form__main .textarea-field {
    flex: 2 1 50%;
 }
 
-.form__main .text-field__textarea{
+.form__main .textarea-field__textarea{
    resize: none;
    min-height: 830px;
 }
 
-.form__main .text-field__label {
-   font-size: 12px;
-   line-height: 20px;
+.form__main .textarea-field__label {
    color: #999999;
+}
+
+.form__footer {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   align-items: center;
+   padding: 15px;
+   border-top: 1px solid rgba(0, 0, 0, 0.2);;
 }

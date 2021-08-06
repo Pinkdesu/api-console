@@ -16,12 +16,12 @@ const TextArea: React.VFC<IProps> = (props) => {
     <Field name={name} validate={validate}>
       {({ input, meta }) => (
         <div
-          className={cn("text-field", {
+          className={cn("textarea-field", {
             "field-error": meta.error && meta.touched,
           })}
         >
-          <label className="text-field__label">{label}</label>
-          <textarea className="text-field__textarea" {...input} />
+          <label className="textarea-field__label">{label}</label>
+          <textarea className="textarea-field__textarea" {...input} />
         </div>
       )}
     </Field>

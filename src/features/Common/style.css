@@ -1,6 +1,9 @@
-.text-field {
+.text-field, .textarea-field {
    display: flex;
    flex-flow: column;
+}
+
+.text-field {
    margin-bottom: 25px;
 }
 
@@ -10,6 +13,11 @@
    justify-content: space-between;
    align-items: center;
    margin-bottom: 5px;
+}
+
+.textarea-field__label {
+   font-size: 12px;
+   line-height: 20px;
 }
 
 .label__text, .label__subtext {
@@ -22,7 +30,7 @@
    color: #999999;
 }
 
-.text-field__input, .text-field__textarea {
+.text-field__input, .textarea-field__textarea{
    background-color: #FFFFFF;
    border: 1px solid rgba(0, 0, 0, 0.2);
    border-radius: 5px;
@@ -36,7 +44,7 @@
    padding: 5px 10px;
 }
 
-.text-field__textarea {
+.textarea-field__textarea {
    font-size: 14px;
    line-height: 18px;
    padding: 10px;
@@ -115,4 +123,14 @@
 
 .button__loader svg{
    vertical-align: middle;
+}
+
+.git-link a {
+   font-style: normal;
+   font-weight: normal;
+   text-decoration: none;
+   font-size: 16px;
+   line-height: 20px;
+   text-align: center;
+   color: #999999;
 }

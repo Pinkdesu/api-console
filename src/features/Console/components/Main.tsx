@@ -2,6 +2,7 @@ import React from "react";
 import { Form } from "react-final-form";
 import Button from "../../Common/Button";
 import TextArea from "../../Common/TextArea";
+import GitLink from "../../Common/GitLink";
 import { ReactComponent as PointsSVG } from "../../../assets/points.svg";
 import "../style.css";
 
@@ -21,6 +22,7 @@ const Main: React.VFC = () => {
             </div>
             <div className="form__footer">
               <Button type="submit" text="Отправить" disabled={!valid} />
+              <GitLink />
             </div>
           </form>
         )}
