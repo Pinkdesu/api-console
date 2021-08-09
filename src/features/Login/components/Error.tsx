@@ -10,11 +10,11 @@ const Error: React.VFC<IProps> = (props) => {
   const { error } = props;
 
   return (
-    <div className="error">
-      <div className="error__icon">
+    <div className="error-message">
+      <div className="error-message__icon">
         <MehSVG />
       </div>
-      <div className="error__description">
+      <div className="error-message__description">
         <h3 className="description__header">Вход не вышел</h3>
         <span className="description__text">{error}</span>
       </div>

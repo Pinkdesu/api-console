@@ -14,7 +14,7 @@
    margin-bottom: 20px;
 }
 
-.content__icon, .content__git {
+.content__icon, .git-link {
    text-align: center;
 }
 
@@ -33,7 +33,7 @@
    line-height: 30px;
 }
 
-.error {
+.error-message {
    display: flex;
    flex-flow: row nowrap;
    background: rgba(207, 44, 0, 0.1);
@@ -43,11 +43,11 @@
    gap: 10px;
 }
 
-.error__icon {
+.error-message__icon {
    margin-top: 4px;
 }
 
-.error__description{
+.error-message__description{
    display: flex;
    flex-flow: column nowrap;
    justify-content: flex-start;

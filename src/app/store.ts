@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import authReducer from "../features/AppBootstrap/authSlice";
-import { STORE_SLICE_NAME as AUTH_REDUCER } from "../features/AppBootstrap/constants";
+import consoleReducer from "../features/Console/consoleSlice";
 import rootSaga from './saga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -9,7 +9,8 @@ const middleware = [sagaMiddleware];
 
 export const store = configureStore({
    reducer: {
-      [AUTH_REDUCER]: authReducer
+      console: consoleReducer,
+      auth: authReducer,
    },
    middleware,
 });

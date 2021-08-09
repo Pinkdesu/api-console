@@ -1,13 +1,10 @@
 import React, { memo, useState } from "react";
 import { ReactComponent as PointsSVG } from "../../../assets/points.svg";
+import { IRequestItem } from "../interfaces";
 import "../style.css";
 
-interface IProps {
-  requestName?: string;
-}
-
-const HistoryItem: React.VFC<IProps> = (props) => {
-  const { requestName = "text.ss" } = props;
+const HistoryItem: React.VFC<IRequestItem> = (props) => {
+  const { title, status } = props;
 
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
 
@@ -18,8 +15,8 @@ const HistoryItem: React.VFC<IProps> = (props) => {
   return (
     <li className="list__item">
       <div className="item__content">
-        <span className="content__status success"></span>
-        <span className="content__request-name small-text">{requestName}</span>
+        <span className={`content__status ${status}`}></span>
+        <span className="content__request-name small-text">{title}</span>
         <button className="opacity-button" onClick={toggleMennu}>
           <span className="opacity-button__icon">
             <PointsSVG />
