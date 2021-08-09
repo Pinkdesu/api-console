@@ -16,7 +16,7 @@ export function* handleRequest({ payload }: PayloadAction<string>): any {
    }
    catch(error: unknown) {
       yield put(createRequestItem({ 
-         response: error as Error, 
+         response: JSON.stringify(error), 
          request: payload, 
          status: 'error' 
       }));

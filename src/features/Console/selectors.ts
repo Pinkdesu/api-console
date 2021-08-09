@@ -4,14 +4,20 @@ import { IFormValues, IRequestItem } from "./interfaces";
 export const requestHistorySelector = (state: RootState): IRequestItem[] => 
    state.console.requestHistory; 
 
+export const lastRequestIdSelector = (state: RootState): number => {
+   const { requestHistory } = state.console;
+
+   return requestHistory[requestHistory.length - 1]?.id ?? 0;
+}
+
 export const currentValuesSelector = (state: RootState): IFormValues => {
    const { currentId, requestHistory } = state.console;
 
-   const requestItem:IRequestItem | undefined = requestHistory.find(
-      request => request.id === currentId
-   );
+   if (currentId) {
+      const requestItem:IRequestItem = requestHistory.find(
+         request => request.id === currentId
+      )!;
       
-   if (requestItem) {
       return {
          request: requestItem.request,
          response: requestItem.response

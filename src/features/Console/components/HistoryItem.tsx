@@ -1,15 +1,29 @@
 import React, { memo, useState } from "react";
-import { ReactComponent as PointsSVG } from "../../../assets/points.svg";
+import { useAppDispatch } from "../../../app/hooks";
+import { deleteRequest, sendRequest } from "../consoleSlice";
 import { IRequestItem } from "../interfaces";
+import { ReactComponent as PointsSVG } from "../../../assets/points.svg";
 import "../style.css";
 
 const HistoryItem: React.VFC<IRequestItem> = (props) => {
-  const { title, status } = props;
+  const dispatch = useAppDispatch();
+
+  const { id, title, status, request } = props;
 
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
 
   const toggleMennu = () => {
     setMenuOpened((prevState) => !prevState);
+  };
+
+  const handleDelete = () => {
+    toggleMennu();
+    dispatch(deleteRequest(id));
+  };
+
+  const handleExecute = () => {
+    toggleMennu();
+    dispatch(sendRequest(request));
   };
 
   return (
@@ -26,13 +40,21 @@ const HistoryItem: React.VFC<IRequestItem> = (props) => {
       {menuOpened && (
         <ul className="item__menu">
           <li className="menu__point">
-            <button className="point__button small-text">Выполнить</button>
+            <button
+              className="point__button small-text"
+              onClick={handleExecute}
+            >
+              Выполнить
+            </button>
           </li>
           <li className="menu__point">
             <button className="point__button small-text">Скопировать</button>
           </li>
           <li className="menu__point">
-            <button className="point__button point__button_red small-text">
+            <button
+              className="point__button point__button_red small-text"
+              onClick={handleDelete}
+            >
               Удалить
             </button>
           </li>

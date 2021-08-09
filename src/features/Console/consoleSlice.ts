@@ -31,10 +31,40 @@ const consoleSlice = createSlice({
             currentId: id,
             lastId: id
          }
-      }
+      },
+      deleteRequest(state: IState, action: PayloadAction<number>) {
+         const { requestHistory, currentId } = state;
+         const { payload } = action;
+
+         if (requestHistory.length === 0) return state;
+
+         const deletedRequest = requestHistory.find(request => request.id === payload);
+         const newHistory = requestHistory.filter(request => request.id !== payload);
+
+         if(newHistory.length === 0){
+            return {
+               requestHistory: newHistory,
+               currentId: null,
+               lastId: null
+            }
+         }
+
+         const newCurrent = deletedRequest!.id !== currentId ? 
+                     currentId : newHistory[newHistory.length - 1].id;
+
+         return {
+            ...state,
+            currentId: newCurrent,
+            requestHistory: newHistory,
+         }
+      },
    }
 });
 
-export const { sendRequest, createRequestItem } = consoleSlice.actions;
+export const { 
+   sendRequest, 
+   createRequestItem, 
+   deleteRequest 
+} = consoleSlice.actions;
 
 export default consoleSlice.reducer;
