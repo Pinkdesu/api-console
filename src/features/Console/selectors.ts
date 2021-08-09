@@ -1,9 +1,25 @@
 import { RootState } from "../../app/store";
-import { IRequestItem } from "./interfaces";
+import { IFormValues, IRequestItem } from "./interfaces";
 
-export const requestHistorySelector = (state: RootState): IRequestItem[] => state.console.requestHistory; 
+export const requestHistorySelector = (state: RootState): IRequestItem[] => 
+   state.console.requestHistory; 
 
-export const currentRequestSelector = (state: RootState): IRequestItem => 
-   state.console.requestHistory.find(
-      request => request.id === state.console.currentId
-   )!; 
+export const currentValuesSelector = (state: RootState): IFormValues => {
+   const { currentId, requestHistory } = state.console;
+
+   const requestItem:IRequestItem | undefined = requestHistory.find(
+      request => request.id === currentId
+   );
+      
+   if (requestItem) {
+      return {
+         request: requestItem.request,
+         response: requestItem.response
+      }
+   }
+   
+   return {
+      request: '',
+      response: ''
+   }
+}

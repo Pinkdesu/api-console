@@ -2,27 +2,39 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IState } from "./interfaces";
 
 const initialState: IState = {
-   requestHistory: [{
-      id: 1,
-      title: 'New',
-      request: '',
-      response: '',
-      status: 'error'
-   }],
-   currentId: 1,
-   lastId: 1
+   requestHistory: [],
+   currentId: null,
+   lastId: null
 }
 
 const consoleSlice = createSlice({
    name: 'console',
    initialState,
    reducers: {
-      sendRequest(state: IState, action: PayloadAction<string>) {
-         console.log(action);
+      sendRequest(state: IState, action: PayloadAction<string>) {},
+      
+      createRequestItem(state: IState, action) {
+         const { lastId, requestHistory } = state;
+         const { request, response, status } = action.payload; 
+
+         const id = Number(lastId) + 1;
+         const newHistory = requestHistory.concat({
+            id,
+            title: `request ${id}`,
+            request,
+            response,
+            status,
+         })
+
+         return {
+            requestHistory: newHistory,
+            currentId: id,
+            lastId: id
+         }
       }
    }
 });
 
-export const { sendRequest } = consoleSlice.actions;
+export const { sendRequest, createRequestItem } = consoleSlice.actions;
 
 export default consoleSlice.reducer;

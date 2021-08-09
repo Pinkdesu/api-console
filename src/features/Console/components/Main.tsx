@@ -1,6 +1,6 @@
 import React from "react";
 import { jsonFieldValidator } from "../constants";
-import { currentRequestSelector } from "../selectors";
+import { currentValuesSelector } from "../selectors";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Form } from "react-final-form";
 import { IFormValues } from "../interfaces";
@@ -14,7 +14,7 @@ import "../style.css";
 
 const Main: React.VFC = () => {
   const dispatch = useAppDispatch();
-  const { request, response } = useAppSelector(currentRequestSelector);
+  const { request, response } = useAppSelector(currentValuesSelector);
 
   const onSubmit = (values: IFormValues) => {
     const { request } = values;
@@ -33,17 +33,11 @@ const Main: React.VFC = () => {
                 name="request"
                 label="Запрос:"
                 validate={jsonFieldValidator}
-                initialValue={request}
               />
               <span className="main__separator">
                 <PointsSVG />
               </span>
-              <TextArea
-                name="response"
-                label="Ответ:"
-                initialValue={response}
-                readOnly
-              />
+              <TextArea name="response" label="Ответ:" readOnly />
             </div>
             <div className="form__footer">
               <Button type="submit" text="Отправить" disabled={!valid} />

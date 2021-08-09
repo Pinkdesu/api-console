@@ -6,22 +6,15 @@ import "./style.css";
 interface IProps {
   name: string;
   label: string;
-  initialValue?: string;
   validate?: (value: string) => string | undefined;
   readOnly?: boolean;
 }
 
 const TextArea: React.VFC<IProps> = (props) => {
-  const {
-    name,
-    label,
-    readOnly = false,
-    initialValue = "",
-    validate = () => undefined,
-  } = props;
+  const { name, label, readOnly = false, validate = () => undefined } = props;
 
   return (
-    <Field name={name} validate={validate} initialValue={initialValue}>
+    <Field name={name} validate={validate}>
       {({ input, meta }) => (
         <div
           className={cn("textarea-field", {
