@@ -16,7 +16,7 @@ const authSlice = createSlice({
    name: 'auth',
    initialState,
    reducers: {
-      auth(state, action: PayloadAction<IAuth>) {
+      auth(state:IState, action: PayloadAction<IAuth>) {
          return {...state, loading: true }
       },
       authSuccess(_, action: PayloadAction<IUser>) {
@@ -28,14 +28,17 @@ const authSlice = createSlice({
             error: null, 
          }
       },
-      authError(state, action: PayloadAction<string>) {
+      authError(state:IState, action: PayloadAction<string>) {
          const { payload } = action;
 
          return {...state, loading: false, error: payload}
+      },
+      logOut() {
+         return initialState
       }
    }
 });
 
-export const { authSuccess, authError, auth } = authSlice.actions;
+export const { authSuccess, authError, auth, logOut } = authSlice.actions;
 
 export default authSlice.reducer;

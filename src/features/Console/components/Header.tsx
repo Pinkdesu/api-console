@@ -1,7 +1,8 @@
 import React from "react";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { userSelector } from "../../AppBootstrap/selectors";
 import { IUser } from "../../AppBootstrap/interfaces";
+import { logOut } from "../../AppBootstrap/authSlice";
 import { ReactComponent as LogoSVG } from "../../../assets/logo.svg";
 import { ReactComponent as LogOutSVG } from "../../../assets/log-out.svg";
 import { ReactComponent as ExpandSVG } from "../../../assets/expand.svg";
@@ -14,9 +15,15 @@ interface IProps {
 }
 
 const Header: React.VFC<IProps> = (props) => {
+  const dispatch = useAppDispatch();
+
   const { fullScreen, toggleScreen } = props;
 
   const { login, sublogin } = useAppSelector<IUser>(userSelector);
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
 
   return (
     <header className="console__header">
@@ -38,7 +45,7 @@ const Header: React.VFC<IProps> = (props) => {
         </div>
         {/* TODO: common component */}
         <div>
-          <button className="opacity-button">
+          <button className="opacity-button" onClick={handleLogOut}>
             <span className="opacity-button__text">Выйти</span>
             <span className="opacity-button__icon">
               <LogOutSVG />

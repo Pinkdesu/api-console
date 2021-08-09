@@ -1,6 +1,6 @@
-import { takeLatest, put } from "redux-saga/effects";
+import { takeLatest, put, all } from "redux-saga/effects";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { auth, authSuccess, authError } from "./authSlice";
+import { auth, authSuccess, authError, logOut } from "./authSlice";
 import { IAuth, IError } from "./interfaces";
 import api from "../../api";
 
@@ -30,8 +30,15 @@ export function* authenticate({ payload }: PayloadAction<IAuth>): any {
       
       yield put(authError(`{ id: ${id}, explain: ${explain} }`));
    }
- }
+}
+
+export function handleLogOut(): any {
+   document.cookie = '';
+}
 
 export default function* watcherSaga() {
-  yield takeLatest(auth.type, authenticate);
+  yield all([
+      takeLatest(auth.type, authenticate),
+      takeLatest(logOut.type, handleLogOut)
+  ]);
 }

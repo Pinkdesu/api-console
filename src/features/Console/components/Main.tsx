@@ -1,7 +1,7 @@
 import React from "react";
 import { jsonFieldValidator } from "../constants";
-import { currentValuesSelector } from "../selectors";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+//import { currentValuesSelector } from "../selectors";
+import { useAppDispatch /*useAppSelector*/ } from "../../../app/hooks";
 import { Form } from "react-final-form";
 import { IFormValues } from "../interfaces";
 import { sendRequest } from "../consoleSlice";
@@ -14,7 +14,7 @@ import "../style.css";
 
 const Main: React.VFC = () => {
   const dispatch = useAppDispatch();
-  const { request, response } = useAppSelector(currentValuesSelector);
+  //const { request, response } = useAppSelector(currentValuesSelector);
 
   const onSubmit = (values: IFormValues) => {
     const { request } = values;

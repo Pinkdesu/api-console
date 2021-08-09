@@ -26,6 +26,12 @@ const HistoryItem: React.VFC<IRequestItem> = (props) => {
     dispatch(sendRequest(request));
   };
 
+  const handleCopy = () => {
+    //TODO: add animation
+    toggleMennu();
+    navigator.clipboard.writeText(request).then(() => {});
+  };
+
   return (
     <li className="list__item">
       <div className="item__content">
@@ -48,7 +54,9 @@ const HistoryItem: React.VFC<IRequestItem> = (props) => {
             </button>
           </li>
           <li className="menu__point">
-            <button className="point__button small-text">Скопировать</button>
+            <button className="point__button small-text" onClick={handleCopy}>
+              Скопировать
+            </button>
           </li>
           <li className="menu__point">
             <button
