@@ -1,6 +1,6 @@
 export interface IFormValues {
    request: string;
-   response?: string;
+   response: string;
 }
 
 export interface IRequestItem {

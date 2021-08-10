@@ -1,6 +1,6 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import cn from "classnames";
-import { Field } from "react-final-form";
+import { Field, useForm } from "react-final-form";
 import "./style.css";
 
 interface IProps {
@@ -8,10 +8,24 @@ interface IProps {
   label: string;
   validate?: (value: string) => string | undefined;
   readOnly?: boolean;
+  value: string;
 }
 
 const TextArea: React.VFC<IProps> = (props) => {
-  const { name, label, readOnly = false, validate = () => undefined } = props;
+  const {
+    name,
+    label,
+    value,
+    readOnly = false,
+    validate = () => undefined,
+  } = props;
+
+  const form = useForm();
+
+  useEffect(() => {
+    form.mutators.updateValue(name, value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return (
     <Field name={name} validate={validate}>

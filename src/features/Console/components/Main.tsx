@@ -1,7 +1,7 @@
 import React from "react";
-import { jsonFieldValidator } from "../constants";
-//import { currentValuesSelector } from "../selectors";
-import { useAppDispatch /*useAppSelector*/ } from "../../../app/hooks";
+import { jsonFieldValidator, updateValue } from "../constants";
+import { currentValuesSelector } from "../selectors";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Form } from "react-final-form";
 import { IFormValues } from "../interfaces";
 import { sendRequest } from "../consoleSlice";
@@ -14,7 +14,8 @@ import "../style.css";
 
 const Main: React.VFC = () => {
   const dispatch = useAppDispatch();
-  //const { request, response } = useAppSelector(currentValuesSelector);
+
+  const { request, response } = useAppSelector(currentValuesSelector);
 
   const onSubmit = (values: IFormValues) => {
     const { request } = values;
@@ -26,6 +27,7 @@ const Main: React.VFC = () => {
       <Form
         onSubmit={onSubmit}
         validateOnBlur={true}
+        mutators={{ updateValue }}
         render={({ handleSubmit, valid }) => (
           <form onSubmit={handleSubmit}>
             <div className="form__main">
@@ -33,11 +35,17 @@ const Main: React.VFC = () => {
                 name="request"
                 label="Запрос:"
                 validate={jsonFieldValidator}
+                value={request}
               />
               <span className="main__separator">
                 <PointsSVG />
               </span>
-              <TextArea name="response" label="Ответ:" readOnly />
+              <TextArea
+                name="response"
+                label="Ответ:"
+                readOnly
+                value={response}
+              />
             </div>
             <div className="form__footer">
               <Button type="submit" text="Отправить" disabled={!valid} />
