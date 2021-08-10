@@ -20,10 +20,10 @@ const consoleSlice = createSlice({
          const id = Number(lastId) + 1;
          const newHistory = requestHistory.concat({
             id,
-            title: `request ${id}`,
-            request,
-            response,
             status,
+            title: request.action,
+            request: JSON.stringify(request),
+            response: JSON.stringify(response),
          })
 
          return {
@@ -58,13 +58,21 @@ const consoleSlice = createSlice({
             requestHistory: newHistory,
          }
       },
+      changeCurrent(state: IState, action: PayloadAction<number>) {
+         const { payload } = action;
+
+         if(state.currentId ===  payload) return state;
+
+         return { ...state, currentId: payload }
+      }
    }
 });
 
 export const { 
    sendRequest, 
    createRequestItem, 
-   deleteRequest 
+   deleteRequest,
+   changeCurrent 
 } = consoleSlice.actions;
 
 export default consoleSlice.reducer;

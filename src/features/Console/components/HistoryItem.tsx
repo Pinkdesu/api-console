@@ -1,6 +1,6 @@
 import React, { memo, useState } from "react";
 import { useAppDispatch } from "../../../app/hooks";
-import { deleteRequest, sendRequest } from "../consoleSlice";
+import { deleteRequest, sendRequest, changeCurrent } from "../consoleSlice";
 import { IRequestItem } from "../interfaces";
 import { ReactComponent as PointsSVG } from "../../../assets/points.svg";
 import "../style.css";
@@ -12,29 +12,31 @@ const HistoryItem: React.VFC<IRequestItem> = (props) => {
 
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
 
-  const toggleMennu = () => {
+  const toggleMennu = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setMenuOpened((prevState) => !prevState);
   };
 
   const handleDelete = () => {
-    toggleMennu();
     dispatch(deleteRequest(id));
   };
 
   const handleExecute = () => {
-    toggleMennu();
     dispatch(sendRequest(request));
   };
 
   const handleCopy = () => {
     //TODO: add animation
-    toggleMennu();
     navigator.clipboard.writeText(request).then(() => {});
+  };
+
+  const changeCurrentRequest = () => {
+    dispatch(changeCurrent(id));
   };
 
   return (
     <li className="list__item">
-      <div className="item__content">
+      <div className="item__content" onClick={changeCurrentRequest}>
         <span className={`content__status ${status}`}></span>
         <span className="content__request-name small-text">{title}</span>
         <button className="opacity-button" onClick={toggleMennu}>

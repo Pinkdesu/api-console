@@ -4,20 +4,20 @@ import { sendRequest, createRequestItem } from "./consoleSlice";
 import api from "../../api";
 
 export function* handleRequest({ payload }: PayloadAction<string>): any {
+   const body = JSON.parse(payload);
+   
    try {
-      const body = JSON.parse(payload);
-
       const response = yield call(api.request, body);
       yield put(createRequestItem({ 
-         response: JSON.stringify(response), 
-         request: payload, 
+         response: response, 
+         request: body, 
          status: 'success'
       }));
    }
    catch(error: unknown) {
       yield put(createRequestItem({ 
-         response: JSON.stringify(error), 
-         request: payload, 
+         response: error,
+         request: body, 
          status: 'error' 
       }));
    }
